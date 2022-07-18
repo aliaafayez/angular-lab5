@@ -1,0 +1,62 @@
+<h2>
+
+
+
+    Register</h2>
+<form [formGroup]="registerform" (ngSubmit)="handleregisterform()">
+    <div class="mb-3">
+        <label for="examplefName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="registerfName" aria-describedby="nameHelp" formControlName="registerfName">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registerfName'].touched && registerform.controls['registerfName'].invalid">
+            <small *ngIf="registerform.controls['registerfName'].errors?.['required']">this is required field</small>
+            <small *ngIf="registerform.controls['registerfName'].errors?.['minlength']">please enter more than 2letters</small>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="examplefName" class="form-label">last Name</label>
+        <input type="email" class="form-control" id="examplefName" aria-describedby="nameHelp" formControlName="registerlName">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registerlName'].touched && registerform.controls['registerlName'].invalid">
+            <small *ngIf="registerform.controls['registerlName'].errors?.['required']">this is required field</small>
+            <small *ngIf="registerform.controls['registerlName'].errors?.['minlength']">please enter more than 2letters</small>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="registeremail" name="loginEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registeremail'].touched && registerform.controls['registeremail'].invalid">
+            <small *ngIf="registerform.controls['registeremail'].errors?.['required']">this is required field</small>
+            <small *ngIf="registerform.controls['registeremail'].errors?.['email']">please enter valid email</small>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="examplefName" class="form-label">password</label>
+        <input type="email" class="form-control" id="examplefName" aria-describedby="nameHelp" formControlName="registerpass" name="registerlName">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registerpass'].touched && registerform.controls['registerpass'].invalid">
+            <small *ngIf="registerform.controls['registerpass'].errors?.['required']">this is required field</small>
+            <small *ngIf="registerform.controls['registerpass'].errors?.['pattern']">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
+
+            </small>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="examplefName" class="form-label">confirm password</label>
+        <input type="email" class="form-control" id="examplefName" aria-describedby="nameHelp" formControlName="registerconfpass">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registerconfpass'].touched ">
+
+            <small *ngIf="registerform.controls['registerpass'].value != registerform.controls['registerconfpass'].value">password  doesn't match</small>
+        </div>
+
+        <div id="emailHelp" class="form-text text-danger" *ngIf="registerform.controls['registerconfpass'].touched && registerform.controls['registerconfpass'].invalid">
+            <small *ngIf="registerform.controls['registerconfpass'].errors?.['required']">this is required field</small>
+
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="registerform.invalid">Register</button>
+</form>
+<!-- [disabled]="registerform.invalid" -->

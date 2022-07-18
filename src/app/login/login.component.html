@@ -1,0 +1,20 @@
+<h2>LogIn</h2>
+<form #loginform="ngForm" (ngSubmit)="handleLogInform(loginform)">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ngModel #loginEmail="ngModel" name="loginEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <div id="emailHelp" class="form-text text-danger" *ngIf="loginEmail.touched && loginEmail.invalid">
+            <small *ngIf="loginEmail?.errors?.['required']">this is required field</small>
+            <small *ngIf="loginEmail?.errors?.['pattern']">please enter valid email</small>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" ngModel #loginPass="ngModel" name="loginPass" required>
+    </div>
+    <div id="passHelp" class="form-text text-danger" *ngIf="loginPass.touched && loginPass.invalid">
+        <small *ngIf="loginPass?.errors?.['required']">this is required field</small>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginform.invalid">Submit</button>
+</form>
